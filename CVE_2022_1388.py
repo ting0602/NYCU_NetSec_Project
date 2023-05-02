@@ -45,9 +45,12 @@ def CVE_2022_1388(target, header, data):
     try:
         # post the request
         res = requests.post(url=target, headers=header, json=data, proxies=None, timeout=15, verify=False)
-        if res.json()['commandResult']:
+        try: 
+            res.json()['commandResult']
             # output: result part
             print(res.json()['commandResult'])
+        except:
+            print(res)
 
     except KeyError:
         print("Error:", res)
