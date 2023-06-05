@@ -1,0 +1,12 @@
+Jun  4 20:26:12 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c id
+Jun  4 20:28:54 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c id
+Jun  4 20:30:05 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c "cat /etc/passwd"
+Jun  4 20:31:51 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c "cat /etc/passwd"
+Jun  4 20:35:03 localhost.localdomain notice tmsh[13168]: 01420002:5: AUDIT - pid=13168 user=root folder=/Common module=(tmos)# status=[Command OK] cmd_data=run sys crypto check-cert stdout disabled
+Jun  4 20:49:15 localhost.localdomain notice tmsh[13604]: 01420002:5: AUDIT - pid=13604 user=root folder=/Common module=(tmos)# status=[Command OK] cmd_data=show sys mcp-state field-fmt
+Jun  4 20:49:16 localhost.localdomain notice tmsh[13615]: 01420002:5: AUDIT - pid=13615 user=root folder=/Common module=(tmos)# status=[Command OK] cmd_data=show sys mcp-state field-fmt
+Jun  4 21:08:12 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c "cat /var/log/restjavad-audit.0.log"
+Jun  4 21:10:47 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c "cat /var/log/restjavad-audit.0.log"
+Jun  4 21:10:56 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c "cat /var/log/restjavad-audit.0.log"
+Jun  4 21:11:15 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c "cat /var/log/restjavad-audit.0.log"
+Jun  4 21:11:51 localhost.localdomain notice icrd_child[10693]: 01420002:5: AUDIT - pid=10693 user=admin folder=/Common module=(tmos)# status=[Command OK] cmd_data=run util bash -c "cat /var/log/restjavad-audit.0.log"

